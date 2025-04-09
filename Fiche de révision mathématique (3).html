@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de Révision Mathématique</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; max-width: 800px; margin: auto; }
+        h1, h2, h3 { color: #2c3e50; }
+        .math-content { margin-bottom: 20px; padding: 15px; border-radius: 8px; background-color: #ecf0f1; }
+        .math-content p { line-height: 1.6; }
+        .example { background-color: #e74c3c; color: white; padding: 10px; border-radius: 5px; }
+        .example p { color: white; }
+        .highlight { background-color: #f1c40f; color: #fff; padding: 5px; border-radius: 3px; }
+        .section-title { color: #1abc9c; }
+        .definition { background-color: #3498db; color: white; padding: 10px; border-radius: 5px; }
+        .definition p { color: white; }
+        .tip { background-color: #9b59b6; color: white; padding: 10px; border-radius: 5px; }
+        .tip p { color: white; }
+        .legend { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #ecf0f1; }
+        .legend p { margin: 5px 0; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 10px; }
+        .legend-item span { margin-right: 10px; padding: 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+<h1 class="section-title">Fiche de Révision Mathématique</h1>
+
+<h2 class="section-title">Séries Génératrices</h2>
+<div class="math-content">
+    <div class="definition">
+        <p>Une série génératrice pour une suite $ (a_n) $ est définie par :</p>
+
+$$
+        A(x) = \sum_{n=0}^{\infty} a_n x^n
+$$
+    </div>
+    <div class="tip">
+        <p>Les séries génératrices sont particulièrement utiles pour résoudre des récurrences linéaires.</p>
+    </div>
+    <h3>Exemple 1 : $ a_n = 4n + 5 $</h3>
+    <div class="example">
+        <p>La série génératrice est :</p>
+
+$$
+        A(x) = \sum_{n=0}^{\infty} (4n + 5) x^n
+$$
+        <p>Pour trouver une forme fermée, on peut décomposer cette somme :</p>
+
+$$
+        A(x) = 4 \sum_{n=0}^{\infty} n x^n + 5 \sum_{n=0}^{\infty} x^n
+$$
+        <p>On sait que :</p>
+
+$$
+        \sum_{n=0}^{\infty} x^n = \frac{1}{1-x} \quad \text{et} \quad \sum_{n=0}^{\infty} n x^n = \frac{x}{(1-x)^2}
+$$
+        <p>Donc :</p>
+
+$$
+        A(x) = 4 \cdot \frac{x}{(1-x)^2} + 5 \cdot \frac{1}{1-x} = \frac{4x + 5(1-x)}{(1-x)^2} = \frac{5 + x}{(1-x)^2}
+$$
+    </div>
+
+    <h3>Exemple 2 : $ a_n = r^n $</h3>
+    <div class="example">
+        <p>La série génératrice est :</p>
+
+$$
+        A(x) = \sum_{n=0}^{\infty} r^n x^n = \sum_{n=0}^{\infty} (rx)^n
+$$
+        <p>C'est une série géométrique avec la raison $ rx $, donc :</p>
+
+$$
+        A(x) = \frac{1}{1-rx}
+$$
+    </div>
+
+    <h3>Exemple 3 : $ a_n = n^2 $</h3>
+    <div class="example">
+        <p>La série génératrice est :</p>
+
+$$
+        A(x) = \sum_{n=0}^{\infty} n^2 x^n
+$$
+        <p>On peut utiliser la formule connue pour la somme des carrés :</p>
+
+$$
+        \sum_{n=0}^{\infty} n^2 x^n = \frac{x(x+1)}{(1-x)^3}
+$$
+        <p>Donc :</p>
+
+$$
+        A(x) = \frac{x(x+1)}{(1-x)^3}
+$$
+    </div>
+</div>
+
+<h2 class="section-title">Dénombrement</h2>
+<div class="math-content">
+    <h3>Arrangements</h3>
+    <div class="definition">
+        <p>Le nombre d'arrangements de $ k $ éléments parmi $ n $ est donné par :</p>
+
+$$
+        A_n^k = \frac{n!}{(n-k)!}
+$$
+    </div>
+    <div class="tip">
+        <p>Les arrangements sont utilisés lorsque l'ordre des éléments est important.</p>
+    </div>
+    <p>Exemple : Le nombre d'arrangements de 3 éléments parmi 5 est :</p>
+    <div class="highlight">
+
+$$
+        A_5^3 = \frac{5!}{(5-3)!} = 60
+$$
+    </div>
+    <h3>Combinaisons</h3>
+    <div class="definition">
+        <p>Le nombre de combinaisons de $ k $ éléments parmi $ n $ est donné par :</p>
+
+$$
+        C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!}
+$$
+    </div>
+    <div class="tip">
+        <p>Les combinaisons sont utilisées lorsque l'ordre des éléments n'est pas important.</p>
+    </div>
+    <p>Exemple : Le nombre de combinaisons de 3 éléments parmi 5 est :</p>
+    <div class="highlight">
+
+$$
+        C_5^3 = \binom{5}{3} = 10
+$$
+    </div>
+</div>
+
+<h2 class="section-title">Relations</h2>
+<div class="math-content">
+    <div class="definition">
+        <p>Une relation $ R $ sur un ensemble $ X $ est un sous-ensemble de $ X \times X $. On note $ xRy $ si $ (x, y) \in R $.</p>
+    </div>
+    <div class="tip">
+        <p>Les relations peuvent être réflexives, symétriques, antisymétriques, ou transitives.</p>
+    </div>
+    <p>Exemple : Soit $ X = \{1, 2, 3\} $ et $ R = \{(1, 1), (2, 2), (3, 3)\} $. Ici, $ R $ est la relation d'égalité.</p>
+</div>
+
+<h2 class="section-title">Ensembles</h2>
+<div class="math-content">
+    <h3>Union et Intersection</h3>
+    <div class="definition">
+        <p>L'union de deux ensembles $ A $ et $ B $ est :</p>
+
+$$
+        A \cup B = \{ x \mid x \in A \text{ ou } x \in B \}
+$$
+    </div>
+    <p>Exemple : Si $ A = \{1, 2\} $ et $ B = \{2, 3\} $, alors $ A \cup B = \{1, 2, 3\} $.</p>
+    <div class="definition">
+        <p>L'intersection de deux ensembles $ A $ et $ B $ est :</p>
+
+$$
+        A \cap B = \{ x \mid x \in A \text{ et } x \in B \}
+$$
+    </div>
+    <p>Exemple : Si $ A = \{1, 2\} $ et $ B = \{2, 3\} $, alors $ A \cap B = \{2\} $.</p>
+    <h3>Ensemble des parties</h3>
+    <div class="definition">
+        <p>L'ensemble des parties de $ X $, noté $ \mathcal{P}(X) $, est l'ensemble de tous les sous-ensembles de $ X $.</p>
+    </div>
+    <p>Exemple : Si $ X = \{1, 2\} $, alors $ \mathcal{P}(X) = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\} $.</p>
+    <h3>Produit Cartésien</h3>
+    <div class="definition">
+        <p>Le produit cartésien de deux ensembles $ A $ et $ B $ est :</p>
+
+$$
+        A \times B = \{ (a, b) \mid a \in A \text{ et } b \in B \}
+$$
+    </div>
+    <p>Exemple : Si $ A = \{1, 2\} $ et $ B = \{a, b\} $, alors $ A \times B = \{(1, a), (1, b), (2, a), (2, b)\} $.</p>
+    <h3>Cardinaux</h3>
+    <div class="definition">
+        <p>Le cardinal d'un ensemble $ A $, noté $ |A| $, est le nombre d'éléments dans $ A $.</p>
+    </div>
+    <p>Exemple : Si $ A = \{1, 2, 3\} $, alors $ |A| = 3 $.</p>
+</div>
+
+<h2 class="section-title">Monoides</h2>
+<div class="math-content">
+    <div class="definition">
+        <p>Un monoïde est une structure algébrique constituée d'un ensemble $ M $ muni d'une loi de composition interne associative et d'un élément neutre. Formellement, un monoïde est un triplet $ (M, \cdot, e) $ où :</p>
+        <ul>
+            <li>$ M $ est un ensemble.</li>
+            <li>$ \cdot $ est une opération binaire sur $ M $ qui est associative : pour tous $ a, b, c \in M $, $ (a \cdot b) \cdot c = a \cdot (b \cdot c) $.</li>
+            <li>$ e $ est l'élément neutre : pour tout $ a \in M $, $ e \cdot a = a \cdot e = a $.</li>
+        </ul>
+    </div>
+    <div class="tip">
+        <p>Les monoïdes sont des structures fondamentales en théorie des catégories et en informatique théorique.</p>
+    </div>
+    <p>Exemples de monoïdes :</p>
+    <ul>
+        <li>Les entiers naturels $ (\mathbb{N}, +, 0) $ avec l'addition comme opération et 0 comme élément neutre.</li>
+        <li>Les chaînes de caractères avec la concaténation comme opération et la chaîne vide comme élément neutre.</li>
+    </ul>
+    <p>Exemple : Le monoïde $ (\mathbb{N}, \times, 1) $ où l'opération est la multiplication et l'élément neutre est 1.</p>
+</div>
+
+<div class="legend">
+    <h2>Légende des couleurs</h2>
+    <div class="legend-item">
+        <span class="section-title">Titres de section</span>
+        <p>Couleur turquoise pour les titres de sections principales.</p>
+    </div>
+    <div class="legend-item">
+        <span class="definition">Définitions</span>
+        <p>Fond bleu pour les définitions importantes.</p>
+    </div>
+    <div class="legend-item">
+        <span class="example">Exemples</span>
+        <p>Fond rouge pour les exemples illustratifs.</p>
+    </div>
+    <div class="legend-item">
+        <span class="highlight">Résultats d'exemples</span>
+        <p>Fond jaune pour les résultats ou points clés dans les exemples.</p>
+    </div>
+    <div class="legend-item">
+        <span class="tip">Conseils</span>
+        <p>Fond violet pour les conseils et astuces supplémentaires.</p>
+    </div>
+</div>
+
+</body>
+</html>
